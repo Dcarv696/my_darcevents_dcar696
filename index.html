@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marca Aurora — Página de Apresentação</title>
+  <meta name="description" content="Página de apresentação de uma marca não comercial. Simples, moderna e responsiva." />
+  <meta name="color-scheme" content="light dark" />
+  <!--
+    ✅ Como publicar este ficheiro no GitHub Pages:
+    1) Crie um repositório público (ex.: aurora-site)
+    2) Faça upload deste index.html
+    3) Em Settings → Pages: Source = Deploy from a branch, Branch = main / (root)
+    4) Aguarde o build: o site ficará em https://SEU-UTILIZADOR.github.io/aurora-site/
+  -->
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #11131a;
+      --muted: #c7cad1;
+      --text: #f5f7fb;
+      --brand: #7c5cff;
+      --brand-2: #22d3ee;
+      --ring: rgba(124, 92, 255, .35);
+      --shadow: 0 10px 25px rgba(0,0,0,.25), 0 2px 6px rgba(0,0,0,.2);
+    }
+    :root.light {
+      --bg: #f7f7fb;
+      --panel: #ffffff;
+      --muted: #5b6270;
+      --text: #0f1222;
+      --brand: #6a5cff;
+      --brand-2: #06b6d4;
+      --ring: rgba(106, 92, 255, .25);
+      --shadow: 0 12px 28px rgba(17, 17, 26, .06), 0 2px 6px rgba(17,17,26,.06);
+    }
+
+    * { box-sizing: border-box }
+    html,body { height: 100% }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(124,92,255,.15), transparent 60%),
+                  radial-gradient(800px 400px at -10% 10%, rgba(34,211,238,.12), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none }
+    .container { width: min(1100px, 92%); margin: 0 auto }
+    .btn {
+      display: inline-flex; align-items: center; gap: .55rem;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: white; padding: .9rem 1.2rem; border-radius: 1rem; font-weight: 700;
+      box-shadow: var(--shadow);
+      border: 0; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px) }
+    .btn:focus { outline: 3px solid var(--ring); outline-offset: 2px }
+    .btn.ghost { background: transparent; color: var(--text); border: 1px solid rgba(127,127,127,.25) }
+
+    /* NAV */
+    header { position: sticky; top: 0; backdrop-filter: saturate(1.2) blur(10px); z-index: 30; }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: .8rem 0;
+    }
+    .brand { display: flex; align-items: center; gap: .6rem; font-weight: 800; letter-spacing: .2px }
+    .brand svg { width: 28px; height: 28px }
+    nav ul { list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0 }
+    nav a { padding: .5rem .75rem; border-radius: .7rem; font-weight: 600; color: var(--muted) }
+    nav a:hover, nav a.active { color: var(--text); background: rgba(124,92,255,.12) }
+    .theme-toggle { border-radius: .8rem; border: 1px solid rgba(127,127,127,.3); padding: .5rem .7rem; background: var(--panel); color: var(--text) }
+
+    /* HERO */
+    .hero { padding: 5rem 0 3rem; position: relative }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; align-items: center }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin: 0 0 1rem }
+    .kicker { display: inline-block; padding: .35rem .7rem; border: 1px solid rgba(127,127,127,.25); border-radius: 999px; font-size: .85rem; color: var(--muted); margin-bottom: .9rem }
+    .lead { font-size: clamp(1rem, 1.9vw, 1.25rem); color: var(--muted) }
+    .hero-card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)); border: 1px solid rgba(127,127,127,.25); border-radius: 1.4rem; padding: 1.2rem; box-shadow: var(--shadow) }
+    .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 1.2rem }
+    .stat { background: var(--panel); padding: 1rem; border-radius: 1rem; border: 1px solid rgba(127,127,127,.2); text-align: center }
+    .stat h3 { margin: .2rem 0; font-size: 1.4rem }
+    .stat p { margin: 0; font-size: .85rem; color: var(--muted) }
+
+    /* SECTIONS */
+    section { padding: 3.5rem 0 }
+    .section-header { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem }
+    .section-header h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin: 0 }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem }
+    .card { background: var(--panel); border-radius: 1.2rem; padding: 1.2rem; border: 1px solid rgba(127,127,127,.2) }
+    .card h3 { margin-top: .2rem }
+    .badge { display: inline-flex; align-items: center; gap: .4rem; font-size: .8rem; color: var(--muted); border: 1px solid rgba(127,127,127,.25); padding: .25rem .55rem; border-radius: .6rem }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 1.2rem; }
+    .timeline::before { content: ""; position: absolute; left: .35rem; top: .2rem; bottom: .2rem; width: 2px; background: linear-gradient(var(--brand), transparent) }
+    .tl-item { position: relative; margin: 1rem 0 1rem 0 }
+    .tl-item::marker { content: none }
+    .dot { position: absolute; left: -2px; top: .35rem; width: 10px; height: 10px; background: var(--brand); border-radius: 999px; box-shadow: 0 0 0 4px rgba(124,92,255,.18) }
+    .tl-content { background: var(--panel); border: 1px solid rgba(127,127,127,.2); border-radius: 1rem; padding: 1rem; }
+    .tl-content h4 { margin: 0 0 .35rem }
+
+    /* CTA */
+    .cta { text-align: center; padding: 3.5rem 1rem; border: 1px dashed rgba(127,127,127,.3); border-radius: 1.2rem; background: linear-gradient(180deg, rgba(124,92,255,.06), transparent) }
+
+    /* FOOTER */
+    footer { padding: 2.5rem 0; color: var(--muted) }
+    .footgrid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1.2rem }
+    .small { font-size: .9rem }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px){
+      .hero-grid { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .footgrid { grid-template-columns: 1fr; }
+      nav ul { display: none }
+      .menu-btn { display: inline-flex }
+    }
+    @media (min-width: 901px){ .menu-btn { display: none } }
+
+    /* ANIMATIONS */
+    .fade-up { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease }
+    .fade-up.visible { opacity: 1; transform: translateY(0) }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Início">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--brand)"/><stop offset="100%" stop-color="var(--brand-2)"/></linearGradient></defs><path fill="url(#g)" d="M16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13S3 23.18 3 16 8.82 3 16 3Zm0 4.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Z"/></svg>
+        Aurora
+      </a>
+      <button class="menu-btn btn ghost" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">Menu</button>
+      <nav id="menu" aria-label="Secundário">
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#valores">Valores</a></li>
+          <li><a href="#linha-do-tempo">História</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">🌙</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container fade-up">
+      <div class="hero-grid">
+        <div>
+          <span class="kicker">Marca não comercial</span>
+          <h1>Conectando pessoas a ideias que iluminam.</h1>
+          <p class="lead">A Aurora é uma marca-conceito dedicada a projetos culturais e educacionais de impacto social. Sem fins comerciais, com propósito e transparência.</p>
+          <div style="display:flex; gap:.7rem; margin-top:1.1rem">
+            <a class="btn" href="#contacto">Fale connosco</a>
+            <a class="btn ghost" href="#valores">Conheça os valores</a>
+          </div>
+          <div class="stats" aria-label="Estatísticas">
+            <div class="stat">
+              <h3 id="statAnos" aria-live="polite">0</h3>
+              <p>Anos de iniciativas</p>
+            </div>
+            <div class="stat">
+              <h3>+40</h3>
+              <p>Voluntários</p>
+            </div>
+            <div class="stat">
+              <h3>8</h3>
+              <p>Parcerias</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card" role="img" aria-label="Cartão com missão da marca">
+          <div class="badge">Missão</div>
+          <h3>Promover acesso aberto ao conhecimento.</h3>
+          <p class="small">Criamos e apoiamos projetos de aprendizagem livre, eventos comunitários e recursos digitais que ajudam pessoas a aprender e partilhar.</p>
+          <ul class="small" style="margin-left:1rem">
+            <li>Eventos locais e online</li>
+            <li>Biblioteca digital aberta</li>
+            <li>Mentorias e grupos de estudo</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="container fade-up">
+      <div class="section-header">
+        <h2>Sobre a Aurora</h2>
+        <span class="badge">Desde 2021</span>
+      </div>
+      <div class="card">
+        <p>Somos uma iniciativa independente sem fins lucrativos. Acreditamos que a educação de qualidade deve ser acessível a todas as pessoas. Operamos de forma transparente, com foco em colaboração, partilha e impacto social mensurável.</p>
+        <p class="small" style="opacity:.9">Nota legal: esta é uma marca não comercial. Conteúdos e marca são partilhados sob licença Creative Commons BY-NC 4.0.</p>
+      </div>
+    </section>
+
+    <section id="valores" class="container fade-up">
+      <div class="section-header">
+        <h2>Valores</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Acesso Aberto</h3>
+          <p>Promovemos conhecimento livre, com recursos abertos e reutilizáveis.</p>
+        </div>
+        <div class="card">
+          <h3>Transparência</h3>
+          <p>Publicamos processos, decisões e métricas de impacto.</p>
+        </div>
+        <div class="card">
+          <h3>Comunidade</h3>
+          <p>Co-construímos com voluntários e parceiros locais.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="linha-do-tempo" class="container fade-up">
+      <div class="section-header">
+        <h2>História</h2>
+      </div>
+      <ol class="timeline">
+        <li class="tl-item">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="tl-content">
+            <h4>2021 — Nasce a ideia</h4>
+            <p>Um grupo de amigos inicia encontros de estudo abertos ao público.</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="tl-content">
+            <h4>2023 — Primeiras parcerias</h4>
+            <p>Lançámos oficinas com bibliotecas comunitárias e escolas públicas.</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="tl-content">
+            <h4>2025 — Plataforma digital</h4>
+            <p>Publicámos uma biblioteca de recursos abertos e guias práticos.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="container fade-up" id="contacto">
+      <div class="section-header">
+        <h2>Contacto</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Fale connosco</h3>
+          <form id="contactForm" novalidate>
+            <label class="small" for="nome">Nome</label>
+            <input id="nome" name="nome" required placeholder="O seu nome" style="width:100%; padding:.8rem; border-radius:.8rem; border:1px solid rgba(127,127,127,.3); background: var(--panel); color: var(--text); margin:.35rem 0  .7rem">
+
+            <label class="small" for="email">Email</label>
+            <input id="email" name="email" required type="email" placeholder="voce@exemplo.com" style="width:100%; padding:.8rem; border-radius:.8rem; border:1px solid rgba(127,127,127,.3); background: var(--panel); color: var(--text); margin:.35rem 0 .7rem">
+
+            <label class="small" for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Como podemos colaborar?" style="width:100%; padding:.8rem; border-radius:.8rem; border:1px solid rgba(127,127,127,.3); background: var(--panel); color: var(--text); margin:.35rem 0 1rem"></textarea>
+
+            <button class="btn" type="submit">Enviar</button>
+            <p id="formMsg" class="small" role="status" aria-live="polite" style="margin-top:.6rem"></p>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Redes & Recursos</h3>
+          <ul>
+            <li><a href="#" aria-label="Link para a biblioteca digital">Biblioteca digital</a></li>
+            <li><a href="#" aria-label="Link para calendário de eventos">Calendário de eventos</a></li>
+            <li><a href="#" aria-label="Guia de voluntariado">Guia de voluntariado</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Press Kit</h3>
+          <p class="small">Faça download do nosso logótipo e manual rápido de uso.</p>
+          <button class="btn" id="downloadKit">Download do kit</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="container fade-up">
+      <div class="cta">
+        <h2>Quer apoiar um projeto local?</h2>
+        <p class="small">Sugira uma iniciativa e ajude-nos a ligá-la a voluntários e recursos.</p>
+        <a class="btn" href="#contacto">Propor iniciativa</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footgrid">
+        <div>
+          <div class="brand" style="margin-bottom:.5rem">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--brand)"/><stop offset="100%" stop-color="var(--brand-2)"/></linearGradient></defs><path fill="url(#g2)" d="M16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13S3 23.18 3 16 8.82 3 16 3Zm0 4.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Z"/></svg>
+            Aurora
+          </div>
+          <p class="small">Conteúdo sob <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.pt" target="_blank" rel="noopener">CC BY-NC 4.0</a>. © <span id="year"></span> Aurora.</p>
+        </div>
+        <div>
+          <h4>Contactos</h4>
+          <ul class="small">
+            <li>Email: <a id="mailto" href="mailto:contato@example.org">contato@example.org</a></li>
+            <li>Instagram: <a href="#">@aurora</a></li>
+            <li>GitHub: <a href="#">/aurora</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Localização</h4>
+          <p class="small">Operamos remotamente e em espaços comunitários na cidade.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS principal -->
+  <script>
+    // ===== Preferência de tema (claro/escuro) com persistência =====
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') root.classList.add('light');
+    themeToggle.textContent = root.classList.contains('light') ? '🌞' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      root.classList.toggle('light');
+      const isLight = root.classList.contains('light');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      themeToggle.textContent = isLight ? '🌞' : '🌙';
+    });
+
+    // ===== Menu mobile =====
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    menuBtn?.addEventListener('click', () => {
+      const open = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!open));
+      menu.style.display = open ? 'none' : 'block';
+    });
+
+    // ===== Ano atual =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Animação de contadores =====
+    function animateCounter(el, to, duration = 900){
+      const start = 0; const startTime = performance.now();
+      function tick(now){
+        const p = Math.min(1, (now - startTime) / duration);
+        const val = Math.floor(start + (to - start) * p);
+        el.textContent = String(val);
+        if(p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    // anos de iniciativa desde 2021 até o ano atual
+    const since = 2021; const currentYear = new Date().getFullYear();
+    const anos = Math.max(1, currentYear - since + 1);
+    animateCounter(document.getElementById('statAnos'), anos);
+
+    // ===== Aparecer com fade quando entra no viewport =====
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+
+    // ===== Validação simples do formulário =====
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMsg');
+    form?.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('mensagem').value.trim();
+      if (!nome || !email) {
+        formMsg.textContent = 'Por favor, preencha nome e email.';
+        formMsg.style.color = '#ffb4b4';
+        return;
+      }
+      // Simula envio (poderia integrar com um serviço tipo Formspree)
+      formMsg.textContent = 'Obrigado! Entraremos em contacto em breve.';
+      formMsg.style.color = 'inherit';
+      form.reset();
+    });
+
+    // ===== Press Kit (gera um ZIP com JSZip) =====
+    // Carrega JSZip via CDN, depois cria ficheiros dinâmicos
+    const kitBtn = document.getElementById('downloadKit');
+    kitBtn?.addEventListener('click', async () => {
+      kitBtn.disabled = true; kitBtn.textContent = 'A preparar…';
+      try {
+        if (!window.JSZip) {
+          await new Promise((res, rej) => {
+            const s = document.createElement('script');
+            s.src = 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';
+            s.onload = res; s.onerror = rej; document.head.appendChild(s);
+          });
+        }
+        const zip = new JSZip();
+        const logoSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 32 32"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c5cff"/><stop offset="100%" stop-color="#22d3ee"/></linearGradient></defs><circle cx="16" cy="16" r="13" fill="url(#g)"/><circle cx="16" cy="16" r="8.5" fill="none" stroke="#fff" stroke-width="2"/></svg>`;
+        zip.file('logo-aurora.svg', logoSVG);
+        const readme = `Aurora — Press Kit\nLicença: CC BY-NC 4.0\n\nInclui:\n- logo-aurora.svg (vetor)\n- branding.txt (cores e tipografia)\n`;
+        zip.file('README.txt', readme);
+        const branding = `Cores:\n- Primária: #7c5cff\n- Secundária: #22d3ee\nTipografia sugerida:\n- Título: Poppins / Inter\n- Texto: Inter / System UI\n`;
+        zip.file('branding.txt', branding);
+        const blob = await zip.generateAsync({ type: 'blob' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'aurora-press-kit.zip'; a.click();
+        URL.revokeObjectURL(url);
+      } catch (e) {
+        alert('Não foi possível gerar o kit agora. Tente novamente.');
+      } finally {
+        kitBtn.disabled = false; kitBtn.textContent = 'Download do kit';
+      }
+    });
+  </script>
+</body>
+</html>
