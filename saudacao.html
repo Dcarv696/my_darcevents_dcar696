@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Saudação</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1#greeting {
+            font-size: 2.5em;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="greeting"></h1>
+        <p>Bem-vindo(a) à minha página web simples.</p>
+        <p>Aqui poderia adicionar mais informações sobre si, links para projetos, ou detalhes de contacto.</p>
+    </div>
+
+    <!-- Script JavaScript para uma saudação dinâmica -->
+    <script>
+        // Função para obter a hora atual e mostrar a saudação correta
+        function displayGreeting() {
+            const now = new Date();
+            const hour = now.getHours();
+            let greetingMessage = "";
+
+            if (hour >= 5 && hour < 12) {
+                greetingMessage = "Bom dia! ☀️";
+            } else if (hour >= 12 && hour < 18) {
+                greetingMessage = "Boa tarde! 🌇";
+            } else {
+                greetingMessage = "Boa noite! 🌙";
+            }
+
+            // Define o texto do elemento h1 com id="greeting"
+            document.getElementById('greeting').textContent = greetingMessage;
+        }
+
+        // Chama a função quando a página carrega
+        displayGreeting();
+    </script>
+
+</body>
+</html>
